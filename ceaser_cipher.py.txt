@@ -1,0 +1,23 @@
+def caesar_cipher(message, shift):
+result = ""
+
+for char in message:
+if char.isalpha():
+base = ord('a') if char.islower() else ord('A')
+result += chr((ord(char) - base + shift) % 26 + base)
+else:
+result += char
+
+return result
+
+# User input
+action = input("Enter 'E' to encrypt or 'D' to decrypt: ").strip().upper()
+message = input("Enter your message: ")
+shift = int(input("Enter shift value (8-25): ")) % 26
+
+if action == 'E':
+print("Encrypted:", caesar_cipher(message, shift))
+elif action == 'D':
+print("Decrypted:", caesar_cipher(message, -shift))
+else:
+print("Invalid option.")
